@@ -10,9 +10,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt = $pdo->prepare("INSERT INTO voters (name, email, password, nin) VALUES (?, ?, ?, ?)");
     $stmt->execute([$name, $email, $password, $nin]);
     echo "Registration successful!";
+    header("Location: login.php");
+
 }
 ?>
 <head>
+    <title>Register</title>
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
 </head>
@@ -23,4 +26,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     Password: <input type="password" name="password" required><br>
     NIN: <input type="text" name="nin" required><br>
     <button type="submit">Register</button>
+    <div id="extra">
+        <a href="login.php">Login</a>
+    </div> 
+
 </form>
+

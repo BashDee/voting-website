@@ -10,7 +10,7 @@ body {
 }
 
 .container {
-    width: 400px;
+    width: 700px;
     padding: 20px;
     background: #fff;
     border-radius: 10px;
@@ -67,4 +67,53 @@ button:hover {
 .message {
     text-align: center;
     color: green;
+}
+
+#extra {
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+    background-color: #a72859;
+    text-decoration: none;
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
+    margin-left: 60px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+img {
+    border-radius: 5px;
+}
+
+.candidate {
+    display: flex;
+    align-items: center;
+    margin: 15px 0;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.candidate img {
+    margin-right: 20px;
+    border-radius: 5px;
 }
