@@ -11,8 +11,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     echo "Candidate added!";
 }
 ?>
+<head>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
 
 <h2>Add a New Candidate</h2>
+
 <form method="POST" action="admin.php">
     Candidate Name: <input type="text" name="name" required><br>
     Position: <input type="text" name="position" required><br>

@@ -12,6 +12,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     echo "Registration successful!";
 }
 ?>
+<head>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
 
 <form method="POST" action="register.php">
     Name: <input type="text" name="name" required><br>

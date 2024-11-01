@@ -19,6 +19,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 }
 ?>
+<head>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
 
 <form method="POST" action="login.php">
     Email: <input type="email" name="email" required><br>

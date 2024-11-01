@@ -1,4 +1,6 @@
 <?php
+// Change the following according to your db settings
+
 $host = 'localhost';
 $db = 'voting_system';
 $user = 'root';
