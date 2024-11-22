@@ -2,6 +2,12 @@
 session_start();
 require 'db.php';
 
+// Redirect to login page if user is not logged in
+if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
+    header("Location: admin-login.php");
+    exit;
+}
+
 // Handle form submission to add or update a candidate
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_POST['add_candidate'])) {
@@ -62,6 +68,9 @@ $candidates = $pdo->query("SELECT * FROM candidates")->fetchAll();
 </head>
 <body>
     <div class="container">
+        <h2>Welcome, Admin!</h2>
+        <a href="logout.php">Logout</a>
+        
         <h2>Add a New Candidate</h2>
         <form method="POST" action="admin.php" enctype="multipart/form-data">
             <input type="hidden" name="add_candidate" value="1">
@@ -93,7 +102,6 @@ $candidates = $pdo->query("SELECT * FROM candidates")->fetchAll();
                     <td><?php echo htmlspecialchars($candidate['position']); ?></td>
                     <td><?php echo $candidate['votes']; ?></td>
                     <td>
-                        <!-- Edit Button triggers the edit form -->
                         <form method="POST" action="admin.php" style="display:inline;" enctype="multipart/form-data">
                             <input type="hidden" name="edit_candidate" value="1">
                             <input type="hidden" name="candidate_id" value="<?php echo $candidate['id']; ?>">

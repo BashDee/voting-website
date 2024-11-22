@@ -25,10 +25,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && !$already_voted) {
 
     $stmt = $pdo->prepare("UPDATE candidates SET votes = votes + 1 WHERE id = ?");
     $stmt->execute([$candidate_id]);
-    echo "<p class='message'>Vote submitted!</p>";
+    header("Location: results.php");
 
     // Refresh the page to prevent re-submission
-    header("Location: index.php");
+    // header("Location: index.php");
     exit();
 }
 ?>
