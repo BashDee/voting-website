@@ -3,36 +3,41 @@ session_start();
 require 'db.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $admin = $_POST['admin'];
+    $username = $_POST['username'];
     $password = $_POST['password'];
 
-    $stmt = $pdo->prepare("SELECT * FROM admins WHERE admin = ?");
-    $stmt->execute([$admin]);
+    // Fetch the admin details from the database
+    $stmt = $pdo->prepare("SELECT * FROM admins WHERE username = ?");
+    $stmt->execute([$username]);
     $admin = $stmt->fetch();
 
     if ($admin && password_verify($password, $admin['password'])) {
-        $_SESSION['admin_id'] = $admin['id'];
-        $_SESSION['admin'] = $admin;
-
+        // Password matches, set session and redirect to the dashboard
+        $_SESSION['admin_id'] = $admin['username'];
+        // $_SESSION['username'] = $username;
         header("Location: admin.php");
         exit();
     } else {
-        echo "Invalid credentials.";
+        echo "<p>Invalid username or password.</p>";
     }
 }
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>Admin Login</title>
+<title>Admin Login</title>
     <link rel="stylesheet" href="style.css">
     <script src="script.js" defer></script>
+    <meta charset="UTF-8">
+    <title>Admin Login</title>
 </head>
-<h1>ADMIN LOGIN</h1>
-
-<form method="POST" action="admin-login.php">
-    Username: <input type="text" name="admin" required><br>
-
-    Password: <input type="password" name="password" required><br>
-    <button type="submit">Login</button>
-
-</form>
-
+<body>
+    <h1>Admin Login</h1>
+    <form method="POST" action="admin-login.php">
+        Username: <input type="text" name="username" required><br>
+        Password: <input type="password" name="password" required><br>
+        <button type="submit">Login</button>
+    </form>
+</body>
+</html>

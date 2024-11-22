@@ -3,7 +3,7 @@ session_start();
 require 'db.php';
 
 // Redirect to login page if user is not logged in
-if (!isset($_SESSION['logged_in']) || $_SESSION['logged_in'] !== true) {
+if (!isset($_SESSION['admin_id'])) {
     header("Location: admin-login.php");
     exit;
 }

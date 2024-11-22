@@ -13,6 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt = $pdo->prepare("INSERT INTO admins (username, password) VALUES (?, ?)");
     try {
         $stmt->execute([$username, $hashed_password]);
+
         echo "<p>Registration successful! <a href='admin-login.php'>Login here</a></p>";
     } catch (PDOException $e) {
         if ($e->getCode() == 23000) { // Unique constraint violation
@@ -32,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </head>
 <body>
     <h2>Admin Registration</h2>
-    <form method="POST" action="register.php">
+    <form method="POST" action="admin-reg.php">
         Username: <input type="text" name="username" required><br>
         
         Password: <input type="password" name="password" required><br>

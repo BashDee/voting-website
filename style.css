@@ -7,6 +7,7 @@ body {
     min-height: 100vh;
     margin: 0;
     background-color: #f7f7f7;
+    background-image: url("uploads/INEC.png");
 }
 
 .container {
@@ -38,6 +39,7 @@ input[type="password"] {
 
 button {
     padding: 10px;
+    /* flex: 50%; */
     margin: 10px 0;
     border: none;
     border-radius: 5px;
@@ -106,6 +108,8 @@ img {
 
 .candidate {
     display: flex;
+    flex: 50%;
+    justify-content: space-between; /* Space between name and button */
     align-items: center;
     margin: 15px 0;
     padding: 10px;
@@ -116,4 +120,13 @@ img {
 .candidate img {
     margin-right: 20px;
     border-radius: 5px;
+    width: 100px; /* Ensure consistent image size */
+    height: 100px;
+}
+
+h1 {
+    display: block; /* Make h1 behave like a block element */
+    width: 20%; 
+    text-align: center; 
+    margin: 20px 0; /* Add some spacing */
 }
